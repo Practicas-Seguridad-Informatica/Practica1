@@ -1,4 +1,4 @@
-package pima;
+package Practica1;
 
 public class Main 
 {

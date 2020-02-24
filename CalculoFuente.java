@@ -1,4 +1,4 @@
-package pima;
+package Practica1;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,8 @@ public class CalculoFuente
     private ArrayList<String> arrSimbolos;
     private int cantidadSimbolos;
 
-    //Constructor de la clase. Dentro inicializamos la variable global txt donde estará el texto a resolver
-    //También se inicializarán los ArrayList necesarios para el programa
+    //Constructor de la clase. Dentro inicializamos la variable global txt donde estarï¿½ el texto a resolver
+    //Tambiï¿½n se inicializarï¿½n los ArrayList necesarios para el programa
     public CalculoFuente(int cantidadSimbolos)
     {
         txt = "La noche cae, brumosa ya y morada.  "
@@ -17,16 +17,16 @@ public class CalculoFuente
 				+ "El camino sube, lleno de sombras, de campanillas, de fragancia de hierba,  "
 				+ "de canciones, de cansancio y de anhelo.";
 
-        //En este arryList guardaremos los símbolos que componen el texto
+        //En este arryList guardaremos los sï¿½mbolos que componen el texto
         arrSimbolos = new ArrayList<String>();
         
-        //Podremos pasar al programa un parámetro para sabe cada cuántas letras hay un símbolo. (Así tenemos en cuenta el caso del ejercicio 2)
+        //Podremos pasar al programa un parï¿½metro para sabe cada cuï¿½ntas letras hay un sï¿½mbolo. (Asï¿½ tenemos en cuenta el caso del ejercicio 2)
         this.cantidadSimbolos = cantidadSimbolos; 
         
         llenarArraySimbolos();
     }
 
-    //Método utilizado para meter el string txt en el arrSimbolos
+    //Mï¿½todo utilizado para meter el string txt en el arrSimbolos
     public void llenarArraySimbolos()
     {
         int cont = 0;
@@ -35,47 +35,47 @@ public class CalculoFuente
         {
             String aux = "";
 
-            for(int j = 0; j < cantidadSimbolos; j++) //En función de cada cuántos caracteres se componga un símbolo...
+            for(int j = 0; j < cantidadSimbolos; j++) //En funciï¿½n de cada cuï¿½ntos caracteres se componga un sï¿½mbolo...
             {
                 if(cont < txt.length()) //Comprobamos que no hayamos llegado al final del texto (en caso de que este no tenga una longitud tal que pueda dividirse con decimales)
                 {
-                    aux = aux + String.valueOf(txt.charAt(cont)); //iremos formando Strings para cada símbolo (en función de la longitud que nos hayan dicho que tienen los símbolos)
+                    aux = aux + String.valueOf(txt.charAt(cont)); //iremos formando Strings para cada sï¿½mbolo (en funciï¿½n de la longitud que nos hayan dicho que tienen los sï¿½mbolos)
                     cont++;
                 }
             }
 
-            arrSimbolos.add(aux);  //Una vez formado el símbolo lo añadimos al arraylist y así hasta que terminemos el texto
+            arrSimbolos.add(aux);  //Una vez formado el sï¿½mbolo lo aï¿½adimos al arraylist y asï¿½ hasta que terminemos el texto
         }
     }
 
-    //Con este método calcularemos cuántas veces se repite cada símbolo.
+    //Con este mï¿½todo calcularemos cuï¿½ntas veces se repite cada sï¿½mbolo.
     public void resolver() 
     {
-        ArrayList<String> cadaSimbolo = new ArrayList<String>(); //Aquí guardaremos de forma individual cada uno de los símbolos existentes en el texto.
-        ArrayList<Integer> arrCounter = new ArrayList<Integer>(); //En este arrayList guardarmeos un contador para cada posición de los símbolos del anterior arraylist que aumentará para cada símbolo cuando estos se repitan
+        ArrayList<String> cadaSimbolo = new ArrayList<String>(); //Aquï¿½ guardaremos de forma individual cada uno de los sï¿½mbolos existentes en el texto.
+        ArrayList<Integer> arrCounter = new ArrayList<Integer>(); //En este arrayList guardarmeos un contador para cada posiciï¿½n de los sï¿½mbolos del anterior arraylist que aumentarï¿½ para cada sï¿½mbolo cuando estos se repitan
 
-        for(int i = 0; i < arrSimbolos.size(); i++) //Recorremos el array que contiene todos los símbolos
+        for(int i = 0; i < arrSimbolos.size(); i++) //Recorremos el array que contiene todos los sï¿½mbolos
         {
-            if(cadaSimbolo.size() == 0) //Si es el primer símbolo de todos lo añadimos directamente porque no puede estar ya dentro (el array está vacío aún)
+            if(cadaSimbolo.size() == 0) //Si es el primer sï¿½mbolo de todos lo aï¿½adimos directamente porque no puede estar ya dentro (el array estï¿½ vacï¿½o aï¿½n)
             {
                 cadaSimbolo.add(arrSimbolos.get(i));
                 arrCounter.add(1);
             }
-            else  //Si no es el primer símbolo del texto
+            else  //Si no es el primer sï¿½mbolo del texto
             {
-                boolean comprobacion = false; //Flag para saber si un símbolo está ya dentro de nuestro array de únicos o no
+                boolean comprobacion = false; //Flag para saber si un sï¿½mbolo estï¿½ ya dentro de nuestro array de ï¿½nicos o no
 
-                for(int j = 0; j < cadaSimbolo.size(); j++) //Recorremmos nuestro array de símbolos únicos para comprobar si ha sido añadido ya o no
+                for(int j = 0; j < cadaSimbolo.size(); j++) //Recorremmos nuestro array de sï¿½mbolos ï¿½nicos para comprobar si ha sido aï¿½adido ya o no
                 {
-                    if(cadaSimbolo.get(j).equals(arrSimbolos.get(i))) //Si el símbolo ya está dentro del array
+                    if(cadaSimbolo.get(j).equals(arrSimbolos.get(i))) //Si el sï¿½mbolo ya estï¿½ dentro del array
                     {
-                        int aux = arrCounter.get(j) + 1; //Aumentamos el contador de esa posición para ese símbolo
+                        int aux = arrCounter.get(j) + 1; //Aumentamos el contador de esa posiciï¿½n para ese sï¿½mbolo
                         arrCounter.set(j, aux); //Y sustituimos el valor (vamos, como hacer counter++);
-                        comprobacion = true; //Cambiamos el flag para indicar que el símbolo estaba
+                        comprobacion = true; //Cambiamos el flag para indicar que el sï¿½mbolo estaba
                     }
                 }
 
-                if(!comprobacion) //Si al terminar de comprobar ese símbolo para cada uno de los que ya tenemos guardados, vemos que no ha coincidido, lo añadiremos
+                if(!comprobacion) //Si al terminar de comprobar ese sï¿½mbolo para cada uno de los que ya tenemos guardados, vemos que no ha coincidido, lo aï¿½adiremos
                 {
                     cadaSimbolo.add(arrSimbolos.get(i));
                     arrCounter.add(1); //Y le creamos su contador
@@ -95,6 +95,42 @@ public class CalculoFuente
         {
         	System.out.print(arrCounter.get(i) + " ");
         }
-        
+
+        //Vamos a ordenar las frecuencias de mayor a menor para aplicar el algoritmo de Huffman
+
+        boolean terminado; //Flag que utilizaremos para saber si ha habido algÃºn intercambio. Si no lo ha habido significarÃ¡ que ya estÃ¡ completamente ordenado
+
+        while(true)
+        {
+            terminado = true;
+
+            for(int i = 0; i < cadaSimbolo.size() - 1; i++)
+            {
+                if(arrCounter.get(i) < arrCounter.get(i + 1)) //Si el nÃºmero que estÃ¡ a la derecha es mayor...
+                {
+                    terminado = false;  //Cambiamos el terminado a false porque hemos encontrado un intercambio posible, asÃ­ que no hemos terminado
+                    int auxInt = arrCounter.get(i);
+                    String auxString = cadaSimbolo.get(i);
+
+                    arrCounter.set(i, arrCounter.get(i + 1)); //Intercambiamos posiciones en el array de contadores
+                    arrCounter.set(i + 1, auxInt);
+                    
+                    cadaSimbolo.set(i, cadaSimbolo.get(i + 1)); //Intercambiamos posiciones en el array de sÃ­mbolos
+                    cadaSimbolo.set(i + 1, auxString);
+                }
+            }
+
+            if(terminado) //Si no se ha cambiado el flag de atendido a false significa que no ha habido cambios y salimos del bucle.
+            {
+                break;
+            }
+        }
+
+        System.out.println("\n--------------------\n");
+
+        for(int i = 0; i < cadaSimbolo.size(); i++)
+        {
+        	System.out.print(arrCounter.get(i) + " ");
+        }
     }
 }
